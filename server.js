@@ -8,7 +8,28 @@ var app = express();
 app.disable("x-powered-by");
 var fs = require("fs");
 var path = require("path");
+
 const bcrypt = require("bcrypt");
+const saltRounds = 10; // Example salt rounds
+const plainTextPassword = "password123";
+
+// Hash a password
+bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
+  if (err) {
+    console.error("Hashing failed:", err);
+  } else {
+    console.log("Hashed password:", hash);
+
+    // Compare a password
+    bcrypt.compare(plainTextPassword, hash, function (err, result) {
+      if (err) {
+        console.error("Comparison failed:", err);
+      } else {
+        console.log("Password match:", result); // Should be true
+      }
+    });
+  }
+});
 
 app.use(function (req, res, next) {
   res.set({
