@@ -27,8 +27,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"], 
-        scriptSrc: ["'self'", "trusted-cdn.com"], 
-        styleSrc: ["'self'", "style.com"], 
+        scriptSrc: ["'self'", "trusted-cdn.com"]
       },
     },
   })
