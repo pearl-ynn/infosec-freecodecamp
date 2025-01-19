@@ -14,6 +14,8 @@ var ninetyDaysInSeconds = 90*24*60*60;
 // app.use(helmet.noCache());
 // app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", "trusted-cdn.com"] }} ))
 
+app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", "trusted-cdn.com"] }} ))
+
 app.use(
   helmet({
     hidePoweredBy: true, 
@@ -24,12 +26,12 @@ app.use(
     hsts: { maxAge: ninetyDaysInSeconds, force: true }, 
     dnsPrefetchControl: { allow: false }, 
     noCache: true, 
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"], 
-        scriptSrc: ["'self'", "trusted-cdn.com"]
-      },
-    },
+    // contentSecurityPolicy: {
+    //   directives: {
+    //     defaultSrc: ["'self'"], 
+    //     scriptSrc: ["'self'", "trusted-cdn.com"]
+    //   },
+    // },
   })
 );
  
